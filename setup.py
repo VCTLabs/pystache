@@ -131,14 +131,13 @@ CLASSIFIERS = (
     'License :: OSI Approved :: MIT License',
     'Programming Language :: Python',
     'Programming Language :: Python :: 2',
-    'Programming Language :: Python :: 2.4',
-    'Programming Language :: Python :: 2.5',
-    'Programming Language :: Python :: 2.6',
     'Programming Language :: Python :: 2.7',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.1',
-    'Programming Language :: Python :: 3.2',
-    'Programming Language :: Python :: 3.3',
+    'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: Implementation :: PyPy',
 )
 
@@ -382,7 +381,7 @@ def main(sys_argv):
           author_email='chris@ozmm.org',
           maintainer='Chris Jerdonek',
           maintainer_email='chris.jerdonek@gmail.com',
-          url='http://github.com/defunkt/pystache',
+          url='https://github.com/defunkt/pystache',
           install_requires=INSTALL_REQUIRES,
           packages=PACKAGES,
           package_data = {
