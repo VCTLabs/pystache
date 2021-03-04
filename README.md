@@ -41,7 +41,7 @@ provides a good introduction to Mustache's syntax. For a more complete
 (and more current) description of Mustache's behavior, see the official
 [Mustache spec](https://github.com/mustache/spec).
 
-Pystache is [semantically versioned](http://semver.org) and older vaersions
+Pystache is [semantically versioned](http://semver.org) and older versions
 can still be found on [PyPI](http://pypi.python.org/pypi/pystache). This
 version of Pystache still passes all tests in [version
 1.1.2](https://github.com/mustache/spec/tree/v1.1.2) of the spec.
@@ -217,9 +217,12 @@ appear in the mailing list archive.
 Credits
 -------
 
-    Original Author: Chris Wanstrath
-    Previous Maintainer: Chris Jerdonek
-    Forker: Thomas David Baker
+    >>> import pystache
+    >>> context = { 'author': 'Chris Wanstrath', 'maintainer': 'Chris Jerdonek','refurbisher': 'Steve Arnold' }
+    >>> print pystache.render("Author: {{author}}\nMaintainer: {{maintainer}}\nRefurbisher: {{refurbisher}}", context)
+    Author: Chris Wanstrath
+    Maintainer: Chris Jerdonek
+    Refurbisher: Steve Arnold
 
 Pystache logo by [David Phillips](https://davidphillips.us/) is licensed
 under a [Creative Commons Attribution-ShareAlike 3.0 Unported
