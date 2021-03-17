@@ -46,16 +46,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install tox tox-gh-actions
 
-    - name: Run tests with coverage
+    - name: Run full (internal) test suite
       run: |
         tox
       env:
         PLATFORM: ${{ matrix.os }}
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        env_vars: OS,PYTHON
 
     - name: Test with specs and pystache-test
       run: |
@@ -65,9 +60,9 @@ jobs:
       run: |
         tox -e deploy
 
-    #- name: Check docs
-      #if: runner.os == 'Linux'
-      #run: |
-        #sudo apt-get -qq update
-        #sudo apt-get install -y pandoc
-        #tox -e docs
+    - name: Check docs
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get -qq update
+        sudo apt-get install -y pandoc
+        tox -e docs
