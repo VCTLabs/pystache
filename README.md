@@ -66,11 +66,6 @@ Pystache is tested with--
 -   Python 3.2
 -   Python 3.3
 
-[Distribute](https://packages.python.org/distribute/) (the setuptools fork)
-is recommended over [setuptools](https://pypi.python.org/pypi/setuptools).
-If you use [pip](https://www.pip-installer.org/), you probably already satisfy
-this requirement.
-
 Install It
 ----------
 
