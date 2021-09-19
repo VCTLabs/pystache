@@ -62,7 +62,7 @@ def get_spec_tests(spec_test_dir):
 
     """
     # TODO: use logging module instead.
-    print("pystache: spec tests: using %s" % _get_parser_info())
+    print(("pystache: spec tests: using %s" % _get_parser_info()))
 
     cases = []
 
