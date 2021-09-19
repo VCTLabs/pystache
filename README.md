@@ -44,6 +44,10 @@ The conversion was done with:
     2to3 --write --nobackups --no-diffs pystache
 
 
+This fork is in active use by the Penny Dreadful MTG project but you may
+get better results from the [chevron](https://github.com/noahmorrison/chevron)
+project.
+
 <!--
 ![](https://secure.travis-ci.org/defunkt/pystache.png "Travis CI current build status")
 
@@ -63,8 +67,7 @@ Pystache is tested with--
 -   Python 3.3
 
 [Distribute](https://packages.python.org/distribute/) (the setuptools fork)
-is recommended over [setuptools](https://pypi.python.org/pypi/setuptools),
-and is required in some cases (e.g. for Python 3 support).
+is recommended over [setuptools](https://pypi.python.org/pypi/setuptools).
 If you use [pip](https://www.pip-installer.org/), you probably already satisfy
 this requirement.
 
