@@ -10,18 +10,18 @@ Pystache
 <!-- -->
 <!-- We leave the leading brackets empty here.  Otherwise, unwanted -->
 <!-- caption text shows up in the reST version converted by pandoc. -->
-[![CI](https://github.com/sarnold/pystache/actions/workflows/ci.yml/badge.svg)](https://github.com/sarnold/pystache/actions/workflows/ci.yml)
-[![Conda](https://github.com/sarnold/pystache/actions/workflows/conda.yml/badge.svg)](https://github.com/sarnold/pystache/actions/workflows/conda.yml)
-[![Coverage](https://github.com/sarnold/pystache/actions/workflows/coverage.yml/badge.svg)](https://github.com/sarnold/pystache/actions/workflows/coverage.yml)
-[![Security check - Bandit](https://github.com/sarnold/pystache/actions/workflows/bandit.yml/badge.svg)](https://github.com/sarnold/pystache/actions/workflows/bandit.yml)
-[![Release](https://github.com/sarnold/pystache/actions/workflows/release.yml/badge.svg)](https://github.com/sarnold/pystache/actions/workflows/release.yml)
+[![CI](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/ci.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/ci.yml)
+[![Conda](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/conda.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/conda.yml)
+[![Coverage](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/coverage.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/coverage.yml)
+[![Security check - Bandit](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/bandit.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/bandit.yml)
+[![Release](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/release.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/release.yml)
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![Branch Coverage](https://raw.githubusercontent.com/sarnold/pystache/badges/master/test-coverage.svg)](https://github.com/sarnold/pystache)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a8fa1bf4638bfc6581b6/maintainability)](https://codeclimate.com/github/sarnold/pystache/maintainability)
+[![Branch Coverage](https://raw.githubusercontent.com/PennyDreadfulMTG/pystache/badges/master/test-coverage.svg)](https://github.com/PennyDreadfulMTG/pystache)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a8fa1bf4638bfc6581b6/maintainability)](https://codeclimate.com/github/PennyDreadfulMTG/pystache/maintainability)
 
-[![Latest release](https://img.shields.io/github/v/release/sarnold/pystache?include_prereleases)](https://github.com/sarnold/pystache/releases/latest)
-[![License](https://img.shields.io/github/license/sarnold/pystache)](https://github.com/sarnold/pystache/blob/master/LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/PennyDreadfulMTG/pystache?include_prereleases)](https://github.com/PennyDreadfulMTG/pystache/releases/latest)
+[![License](https://img.shields.io/github/license/PennyDreadfulMTG/pystache)](https://github.com/PennyDreadfulMTG/pystache/blob/master/LICENSE)
 [![Python](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
 
 This updated fork of Pystache is currently tested on Python 3.6+ and in
@@ -29,7 +29,7 @@ Conda, on Linux, Macos, and Windows (Python 2.7 support has been removed).
 
 ![](gh/images/logo_phillips_small.png "mustachioed, monocled snake by David Phillips")
 
-[Pystache](http://sarnold.github.com/pystache) is a Python
+[Pystache](http://PennyDreadfulMTG.github.com/pystache) is a Python
 implementation of [Mustache](http://mustache.github.com/). Mustache is a
 framework-agnostic, logic-free templating system inspired by
 [ctemplate](https://code.google.com/p/google-ctemplate/) and
@@ -80,7 +80,7 @@ using something like:
 
 then install it into the repo you just cloned:
 
-    $ git clone https://github.com/sarnold/pystache
+    $ git clone https://github.com/PennyDreadfulMTG/pystache
     $ cd pystache
     $ pre-commit install
     $ pre-commit install-hooks
@@ -112,7 +112,7 @@ Official support for Python 2 will end with Pystache version 0.6.0.
 Install It
 ----------
 
-    pip install -U pystache -f https://github.com/sarnold/pystache/releases/
+    pip install -U pystache -f https://github.com/PennyDreadfulMTG/pystache/releases/
 
 And test it:
 
@@ -157,9 +157,9 @@ directory), use the `Renderer` class like above. One can pass attributes
 to the Renderer class constructor or set them on a Renderer instance. To
 customize template loading on a per-view basis, subclass `TemplateSpec`.
 See the docstrings of the
-[Renderer](https://github.com/sarnold/pystache/blob/master/pystache/renderer.py)
+[Renderer](https://github.com/PennyDreadfulMTG/pystache/blob/master/pystache/renderer.py)
 class and
-[TemplateSpec](https://github.com/sarnold/pystache/blob/master/pystache/template_spec.py)
+[TemplateSpec](https://github.com/PennyDreadfulMTG/pystache/blob/master/pystache/template_spec.py)
 class for more information.
 
 You can also pre-parse a template:
