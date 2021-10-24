@@ -28,7 +28,7 @@ it on the PyPI project page.  If PyPI finds any issues, it will render it
 instead as plain-text, which we do not want.
 
 To check in advance that PyPI will accept and parse the reST file as HTML,
-you can use the rst2html program installed by the docutils package
+you can use the rst2html.py program installed by the docutils package
 (http://docutils.sourceforge.net/).  To install docutils:
 
     $ pip install docutils
@@ -86,33 +86,11 @@ Push a tag to GitHub:
 """
 
 import os
-import shutil
 import sys
+import subprocess as sp
 
-
-py_version = sys.version_info
-
-# distutils does not seem to support the following setup() arguments.
-# It displays a UserWarning when setup() is passed those options:
-#
-#  * entry_points
-#  * install_requires
-#
-# distribute works with Python 2.3.5 and above:
-#
-#   http://packages.python.org/distribute/setuptools.html#building-and-distributing-packages-with-distribute
-#
-if py_version < (2, 3, 5):
-    # TODO: this might not work yet.
-    import distutils as dist
-    from distutils import core
-    setup = core.setup
-else:
-    import setuptools as dist
-    setup = dist.setup
-
-
-VERSION = '0.5.4'  # Also change in pystache/__init__.py.
+from setuptools import setup
+from shlex import split
 
 FILE_ENCODING = 'utf-8'
 
@@ -125,22 +103,6 @@ RST_DESCRIPTION_PATH = 'setup_description.rst'
 TEMP_EXTENSION = '.temp'
 
 PREP_COMMAND = 'prep'
-
-CLASSIFIERS = (
-    'Development Status :: 4 - Beta',
-    'License :: OSI Approved :: MIT License',
-    'Programming Language :: Python',
-    'Programming Language :: Python :: 2',
-    'Programming Language :: Python :: 2.4',
-    'Programming Language :: Python :: 2.5',
-    'Programming Language :: Python :: 2.6',
-    'Programming Language :: Python :: 2.7',
-    'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.1',
-    'Programming Language :: Python :: 3.2',
-    'Programming Language :: Python :: 3.3',
-    'Programming Language :: Python :: Implementation :: PyPy',
-)
 
 # Comments in reST begin with two dots.
 RST_LONG_DESCRIPTION_INTRO = """\
@@ -221,19 +183,17 @@ def convert_md_to_rst(md_path, rst_temp_path):
 
     """
     # Pandoc uses the UTF-8 character encoding for both input and output.
-    command = "pandoc --write=rst --output=%s %s" % (rst_temp_path, md_path)
-    print(("converting with pandoc: %s to %s\n-->%s" % (md_path, rst_temp_path,
-                                                       command)))
+    command = f"pandoc -f markdown-smart --write=rst --output={rst_temp_path} {md_path}"
+    print(f"converting with pandoc: {md_path} to {rst_temp_path}\n-->{command}")
 
     if os.path.exists(rst_temp_path):
         os.remove(rst_temp_path)
 
-    os.system(command)
+    sp.check_call(split(command))
 
     if not os.path.exists(rst_temp_path):
-        s = ("Error running: %s\n"
-             "  Did you install pandoc per the %s docstring?" % (command,
-                                                                 __file__))
+        s = (f"Error running: {command}\n"
+             "  Did you install pandoc per the {__file__} docstring?")
         sys.exit(s)
 
     return read(rst_temp_path)
@@ -308,58 +268,9 @@ Run the following command and commit the changes--
     os.system('python setup.py sdist upload')
 
 
-# We use the package simplejson for older Python versions since Python
-# does not contain the module json before 2.6:
-#
-#   http://docs.python.org/library/json.html
-#
-# Moreover, simplejson stopped officially support for Python 2.4 in version 2.1.0:
-#
-#   https://github.com/simplejson/simplejson/blob/master/CHANGES.txt
-#
-requires = []
-if py_version < (2, 5):
-    requires.append('simplejson<2.1')
-elif py_version < (2, 6):
-    requires.append('simplejson')
-
-INSTALL_REQUIRES = requires
-
-# TODO: decide whether to use find_packages() instead.  I'm not sure that
-#   find_packages() is available with distutils, for example.
-PACKAGES = [
-    'pystache',
-    'pystache.commands',
-    # The following packages are only for testing.
-    'pystache.tests',
-    'pystache.tests.data',
-    'pystache.tests.data.locator',
-    'pystache.tests.examples',
-]
-
-
-# The purpose of this function is to follow the guidance suggested here:
-#
-#   http://packages.python.org/distribute/python3.html#note-on-compatibility-with-setuptools
-#
-# The guidance is for better compatibility when using setuptools (e.g. with
-# earlier versions of Python 2) instead of Distribute, because of new
-# keyword arguments to setup() that setuptools may not recognize.
-def get_extra_args():
-    """
-    Return a dictionary of extra args to pass to setup().
-
-    """
-    extra = {}
-    return extra
-
-
 def main(sys_argv):
 
     # TODO: use the logging module instead of printing.
-    # TODO: include the following in a verbose mode.
-    sys.stderr.write("pystache: using: version %s of %s\n" % (repr(dist.__version__), repr(dist)))
-
     command = sys_argv[-1]
 
     if command == 'publish':
@@ -370,35 +281,10 @@ def main(sys_argv):
         sys.exit()
 
     long_description = read(RST_DESCRIPTION_PATH)
-    template_files = ['*.mustache', '*.txt']
-    extra_args = get_extra_args()
 
-    setup(name='pystache',
-          version=VERSION,
-          license='MIT',
-          description='Mustache for Python',
-          long_description=long_description,
-          author='Chris Wanstrath',
-          author_email='chris@ozmm.org',
-          maintainer='Chris Jerdonek',
-          maintainer_email='chris.jerdonek@gmail.com',
-          url='http://github.com/defunkt/pystache',
-          install_requires=INSTALL_REQUIRES,
-          packages=PACKAGES,
-          package_data = {
-              # Include template files so tests can be run.
-              'pystache.tests.data': template_files,
-              'pystache.tests.data.locator': template_files,
-              'pystache.tests.examples': template_files,
-          },
-          entry_points = {
-            'console_scripts': [
-                'pystache=pystache.commands.render:main',
-                'pystache-test=pystache.commands.test:main',
-            ],
-          },
-          classifiers = CLASSIFIERS,
-          **extra_args
+    setup(
+        long_description=long_description,
+        long_description_content_type='text/x-rst',
     )
 
 

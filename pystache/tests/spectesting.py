@@ -45,6 +45,7 @@ else:
     parser = yaml
 
 
+import ast
 import codecs
 import glob
 import os.path
@@ -62,7 +63,7 @@ def get_spec_tests(spec_test_dir):
 
     """
     # TODO: use logging module instead.
-    print(("pystache: spec tests: using %s" % _get_parser_info()))
+    print("pystache: spec tests: using %s" % _get_parser_info())
 
     cases = []
 
@@ -141,7 +142,7 @@ def _convert_children(node):
             continue
         # Otherwise, we are at a "leaf" node.
 
-        val = eval(val['python'])
+        val = ast.literal_eval(val['python'])
         node[key] = val
         continue
 
@@ -235,10 +236,11 @@ def parse(u):
 
     def code_constructor(loader, node):
         value = loader.construct_mapping(node)
+        # ast.literal_eval will not work here => lambda expression
         return eval(value['python'], {})
 
     yaml.add_constructor('!code', code_constructor)
-    return yaml.load(u)
+    return yaml.full_load(u)
 
 
 class SpecTestBase(unittest.TestCase, AssertStringMixin):

@@ -10,11 +10,27 @@ Pystache
 <!-- -->
 <!-- We leave the leading brackets empty here.  Otherwise, unwanted -->
 <!-- caption text shows up in the reST version converted by pandoc. -->
+[![CI](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/ci.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/ci.yml)
+[![Conda](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/conda.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/conda.yml)
+[![Coverage](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/coverage.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/coverage.yml)
+[![Security check - Bandit](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/bandit.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/bandit.yml)
+[![Release](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/release.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/release.yml)
 
-![](https://github.com/PennyDreadfulMTG/pystache/blob/master/gh/images/logo_phillips.png "mustachioed, monocled snake by David Phillips")
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![Branch Coverage](https://raw.githubusercontent.com/PennyDreadfulMTG/pystache/badges/master/test-coverage.svg)](https://github.com/PennyDreadfulMTG/pystache)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a8fa1bf4638bfc6581b6/maintainability)](https://codeclimate.com/github/PennyDreadfulMTG/pystache/maintainability)
 
-[Pystache](https://github.com/PennyDreadfulMTG/pystache) is a Python
-implementation of [Mustache](https://mustache.github.com/). Mustache is a
+[![Latest release](https://img.shields.io/github/v/release/PennyDreadfulMTG/pystache?include_prereleases)](https://github.com/PennyDreadfulMTG/pystache/releases/latest)
+[![License](https://img.shields.io/github/license/PennyDreadfulMTG/pystache)](https://github.com/PennyDreadfulMTG/pystache/blob/master/LICENSE)
+[![Python](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
+
+This updated fork of Pystache is currently tested on Python 3.6+ and in
+Conda, on Linux, Macos, and Windows (Python 2.7 support has been removed).
+
+![](gh/images/logo_phillips_small.png "mustachioed, monocled snake by David Phillips")
+
+[Pystache](http://PennyDreadfulMTG.github.com/pystache) is a Python
+implementation of [Mustache](http://mustache.github.com/). Mustache is a
 framework-agnostic, logic-free templating system inspired by
 [ctemplate](https://code.google.com/p/google-ctemplate/) and
 et by Ivan Formichev. Like ctemplate, Mustache "emphasizes separating
@@ -26,52 +42,79 @@ provides a good introduction to Mustache's syntax. For a more complete
 (and more current) description of Mustache's behavior, see the official
 [Mustache spec](https://github.com/mustache/spec).
 
-Fork
-----
-
-This is a fork of the abandoned [pystache](https://github.com/defunkt/pystache)
-project.
-
-The reason for forking is that setuptools as of v58.0.2 no longer allows
-the 'use_2to3' option that was being used to build this project for both
-Python2 and Python3. Instead I have run the automatic conversion program
-`2to3` over the whole codebase and committed. Python2 is not supported
-by this fork.
-
-The conversion was done with:
-
-    2to3 --write --nobackups --no-diffs --doctests_only pystache
-    2to3 --write --nobackups --no-diffs pystache
+Pystache is [semantically versioned](http://semver.org) and older versions
+can still be found on [PyPI](http://pypi.python.org/pypi/pystache). This
+version of Pystache now passes all tests in [version
+1.1.3](https://github.com/mustache/spec/tree/v1.1.3) of the spec.
 
 
-This fork is in active use by the Penny Dreadful MTG project but you may
-get better results from the [chevron](https://github.com/noahmorrison/chevron)
-project.
+Making Changes & Contributing
+-----------------------------
 
-<!--
-![](https://secure.travis-ci.org/defunkt/pystache.png "Travis CI current build status")
+This repo is now pre-commit enabled for various linting and format checks
+(and in many cases, automatic fixes).  The checks run on commit/push and will
+fail the commit (if not clean) with some checks performing simple file corrections.
+Simply review the changes and adjust (if needed) then `git add` the files and continue.
 
-Pystache is [semantically versioned](https://semver.org) and can be found
-on [PyPI](https://pypi.python.org/pypi/pystache). This version of
-Pystache passes all tests in [version
-1.1.2](https://github.com/mustache/spec/tree/v1.1.2) of the spec.
--->
+If other checks fail on commit, the failure display should explain the error
+types and line numbers. Note you must fix any fatal errors for the commit to
+succeed; some errors should be fixed automatically (use `git status` and
+` git diff` to review any changes).
+
+Note `pylint` is the primary check that requires your own input, as well
+as a decision as to the appropriate fix action.  You must fix any `pylint`
+warnings (relative to the baseline config score) for the commit to succeed.
+
+See the pre-commit docs under `docs/dev/` for more information.
+
+-  [pre-commit-config](docs/dev/pre-commit-config.rst)
+-  [pre-commit-usage](docs/dev/pre-commit-usage.rst)
+
+You will need to install pre-commit before contributing any changes;
+installing it using your system's package manager is recommended,
+otherwise install with pip into your local user's virtual environment
+using something like:
+
+    $ sudo emerge pre-commit  --or--
+    $ pip install pre-commit
+
+then install it into the repo you just cloned:
+
+    $ git clone https://github.com/PennyDreadfulMTG/pystache
+    $ cd pystache
+    $ pre-commit install
+    $ pre-commit install-hooks
+
+It's usually a good idea to update the hooks to the latest version:
+
+    pre-commit autoupdate
 
 Requirements
 ------------
 
 Pystache is tested with--
 
--   Python 3.1
--   Python 3.2
--   Python 3.3
+-   Python 3.6
+-   Python 3.7
+-   Python 3.8
+-   Python 3.9
+-   Conda (py36-py39)
+
+[Distribute](http://packages.python.org/distribute/) (the setuptools fork)
+is no longer required over [setuptools](http://pypi.python.org/pypi/setuptools),
+as the current packaging is now PEP517-compliant.
+
+JSON support is needed only for the command-line interface and to run
+the spec tests; PyYAML can still be used (see the Develop section).
+
+Official support for Python 2 will end with Pystache version 0.6.0.
 
 Install It
 ----------
 
-    pip install pystache
+    pip install -U pystache -f https://github.com/PennyDreadfulMTG/pystache/releases/
 
-And test it--
+And test it:
 
     pystache-test
 
@@ -87,7 +130,7 @@ Use It
 
 You can also create dedicated view classes to hold your view logic.
 
-Here's your view class (in .../examples/readme.py):
+Here's your view class (in ../pystache/tests/examples/readme.py):
 
     class SayHello(object):
         def to(self):
@@ -106,7 +149,7 @@ directory as your class definition):
 Pull it together:
 
     >>> renderer = pystache.Renderer()
-    >>> print renderer.render(hello)
+    >>> print(renderer.render(hello))
     Hello, Pizza!
 
 For greater control over rendering (e.g. to specify a custom template
@@ -122,8 +165,8 @@ class for more information.
 You can also pre-parse a template:
 
     >>> parsed = pystache.parse(u"Hey {{#who}}{{.}}!{{/who}}")
-    >>> print parsed
-    [u'Hey ', _SectionNode(key=u'who', index_begin=12, index_end=18, parsed=[_EscapeNode(key=u'.'), u'!'])]
+    >>> print(parsed)
+    ['Hey ', _SectionNode(key='who', index_begin=12, index_end=18, parsed=[_EscapeNode(key='.'), '!'])]
 
 And then:
 
@@ -171,28 +214,32 @@ To test from a source distribution (without installing)--
     python test_pystache.py
 
 To test Pystache with multiple versions of Python (with a single
-command!), you can use [tox](https://pypi.python.org/pypi/tox):
+command!) and different platforms, you can use [tox](http://pypi.python.org/pypi/tox):
 
-    pip install virtualenv
     pip install tox
-    tox
+    tox -e setup
 
-If you do not have all Python versions listed in `tox.ini`--
+To run tests on multiple versions with coverage, run:
 
-    tox -e py31,py32  # for example
+    tox -e py38-linux,py39-linux  # for example
+
+(substitute your platform above, eg, macos or windows)
 
 The source distribution tests also include doctests and tests from the
 Mustache spec. To include tests from the Mustache spec in your test
 runs:
 
-    git submodule init
-    git submodule update
+    git submodule update --init
 
 The test harness parses the spec's (more human-readable) yaml files if
 [PyYAML](https://pypi.python.org/pypi/PyYAML) is present. Otherwise, it
 parses the json files. To install PyYAML--
 
     pip install pyyaml
+
+Once the submodule is available, you can run the full test set with:
+
+    tox -e setup . ext/spec/specs
 
 To run a subset of the tests, you can use
 [nose](https://somethingaboutorange.com/mrl/projects/nose/0.11.1/testing.html):
@@ -201,19 +248,23 @@ To run a subset of the tests, you can use
     nosetests --tests pystache/tests/test_context.py:GetValueTests.test_dictionary__key_present
 
 
-Mailing List
-------------
+Mailing List (old)
+------------------
 
-There is a [mailing list](https://librelist.com/browser/pystache/). Note
+There is(was) a [mailing list](http://librelist.com/browser/pystache/). Note
 that there is a bit of a delay between posting a message and seeing it
 appear in the mailing list archive.
 
 Credits
 -------
 
-    Original Author: Chris Wanstrath
-    Previous Maintainer: Chris Jerdonek
-    Forker: Thomas David Baker
+    >>> import pystache
+    >>> context = { 'author': 'Chris Wanstrath', 'maintainer': 'Chris Jerdonek','refurbisher': 'Steve Arnold', 'new_maintainer': 'Thomas David Baker' }
+    >>> print(pystache.render("Author: {{author}}\nMaintainer: {{maintainer}}\nRefurbisher: {{refurbisher}}\nNew maintainer: {{new_maintainer}}", context))
+    Author: Chris Wanstrath
+    Maintainer: Chris Jerdonek
+    Refurbisher: Steve Arnold
+    New maintainer: Thomas David Baker
 
 Pystache logo by [David Phillips](https://davidphillips.us/) is licensed
 under a [Creative Commons Attribution-ShareAlike 3.0 Unported
