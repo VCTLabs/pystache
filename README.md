@@ -17,7 +17,6 @@ Pystache
 [![Release](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/release.yml/badge.svg)](https://github.com/PennyDreadfulMTG/pystache/actions/workflows/release.yml)
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![Branch Coverage](https://raw.githubusercontent.com/PennyDreadfulMTG/pystache/badges/master/test-coverage.svg)](https://github.com/PennyDreadfulMTG/pystache)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a8fa1bf4638bfc6581b6/maintainability)](https://codeclimate.com/github/PennyDreadfulMTG/pystache/maintainability)
 
 [![Latest release](https://img.shields.io/github/v/release/PennyDreadfulMTG/pystache?include_prereleases)](https://github.com/PennyDreadfulMTG/pystache/releases/latest)
