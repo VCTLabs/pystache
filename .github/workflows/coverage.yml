@@ -1,4 +1,5 @@
-# internal coverage PR comment and badge v0.0.2
+# internal coverage PR comment and badge v0.0.3
+# needs separate jobs for coverage checkout/run and PR coverage report comment
 # badge and comment job logic should be tuned for personal vs org use
 # (see badge job comments below)
 name: Coverage
@@ -168,12 +169,28 @@ jobs:
         format: 'markdown'
         output: 'both'
 
+    - name: Upload coverage results for comment
+      uses: actions/upload-artifact@v2
+      with:
+        name: pr-coverage
+        path: code-coverage-results.md
+        retention-days: 1
+
+  comment_cov_report:
+    name: Comment on PR with coverage summary report
+    runs-on: ubuntu-20.04
+    needs: [cov_data, base]
+
+    steps:
+    # artifact downloaded to directory: (upload)name/file
+    - uses: actions/download-artifact@v2
+
     - name: Add Coverage PR Comment
       uses: marocchino/sticky-pull-request-comment@v2.2.0
       if: ${{ github.event_name == 'pull_request' }}
       with:
         header: coverage
-        path: code-coverage-results.md
+        path: pr-coverage/code-coverage-results.md
         hide_and_recreate: true
         hide_classify: "OUTDATED"
 
