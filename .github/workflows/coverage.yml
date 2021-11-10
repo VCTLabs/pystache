@@ -182,6 +182,10 @@ jobs:
     needs: [cov_data, base]
 
     steps:
+    - uses: actions/checkout@v2
+      #with:
+        #fetch-depth: 2
+
     # artifact downloaded to directory: (upload)name/file
     - uses: actions/download-artifact@v2
 
