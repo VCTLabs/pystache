@@ -1,26 +1,20 @@
-# internal coverage PR comment and badge v0.0.3
-# needs separate jobs for coverage checkout/run and PR coverage report comment
-# badge and comment job logic should be tuned for personal vs org use
-# (see badge job comments below)
-# as of Nov 2021: broken on forks, needs much refactoring for previous behavior
+# internal coverage with PR comment and badge v0.0.3
+# Note this works for public orgs but probably only for "internal"
+# pull requests. In the case of fork PRs, there needs to be org-level
+# github app with private key => ACCESS_TOKEN, with more job isolation
+# and output passing in this workflow.
+#
+# This version has updated actions and coverage value regex, no fork isolation
+# yet. Badge and comment job logic should be tuned for personal vs org use
+# (fork PRs still needs the big refactor; see badge job comments below).
 name: Coverage
 
 on:
   workflow_dispatch:
-  pull_request_target:
-    types:
-      - opened
-      - synchronize
-      - reopened
+  pull_request:
   push:
     branches:
       - master
-
-## This workflow needs the `pull-request` permissions to work
-## Refs: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#permissions
-permissions:
-  pull-requests: write
-  contents: read
 
 jobs:
   pre_ci:
@@ -34,8 +28,8 @@ jobs:
     - name: Checkout Project
       uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.pull_request.head.ref }}
-        repository: ${{ github.event.pull_request.head.repo.full_name }}
+        # We need to fetch with a depth of 2 for pull_request so we can do HEAD^2
+        fetch-depth: 2
 
     - name: Environment
       run: |
@@ -46,7 +40,7 @@ jobs:
       env:
         COMMIT_PUSH: ${{ github.event.head_commit.message }}
       run: |
-        COMMIT_MESSAGE="${COMMIT_PUSH:-$(git log --format=%B -n 1 HEAD)}"
+        COMMIT_MESSAGE="${COMMIT_PUSH:-$(git log --format=%B -n 1 HEAD^2)}"
         echo "::set-output name=commit_message::${COMMIT_MESSAGE}"
 
     - name: Extract branch name
@@ -142,9 +136,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.pull_request.head.ref }}
-        repository: ${{ github.event.pull_request.head.repo.full_name }}
-
+        fetch-depth: 0
 
     - uses: actions/setup-python@v2
       with:
@@ -157,55 +149,47 @@ jobs:
 
     - name: Generate coverage and fix pkg name
       run: |
-        tox -e py39-linux
+        tox -e py
 
-    - name: Code Coverage Summary Report (Text & Value)
-      uses: irongut/CodeCoverageSummary@v1.0.5
+    - name: Code Coverage Summary Report (data)
+      uses: irongut/CodeCoverageSummary@v1.1.0
       with:
         filename: coverage.xml
         output: 'both'
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: src_coverage_rpts
+        path: |
+          coverage.xml
+          code-coverage-results.txt
+        retention-days: 1
 
     - name: Check code coverage
       id: coverage
       env:
         VALUE: "Branch Rate"
       run: |
-        COVERAGE="$( cat code-coverage-results.txt | egrep "^${VALUE}" | sed -e 's#^.* \([0-9]*\)%.*#\1#' )"
+        COVERAGE=$( cat code-coverage-results.txt | grep -e ^Summary | grep -o -E "${VALUE} = .{2}" | awk '{ print $4 }' )
         echo "##[set-output name=coverage;]${COVERAGE}"
         echo "##[set-output name=coverage-rounded-display;]${COVERAGE}%"
+        echo "Current coverage is: ${COVERAGE}%"
 
     - name: Code Coverage Summary Report
-      uses: irongut/CodeCoverageSummary@v1.0.5
+      uses: irongut/CodeCoverageSummary@v1.1.0
       if: ${{ github.event_name == 'pull_request' }}
       with:
         filename: coverage.xml
         format: 'markdown'
         output: 'both'
 
-    - name: Upload coverage results for comment
-      uses: actions/upload-artifact@v2
-      with:
-        name: pr-coverage
-        path: code-coverage-results.md
-        retention-days: 1
-
-  comment_cov_report:
-    name: Comment on PR with coverage summary report
-    runs-on: ubuntu-20.04
-    needs: [cov_data, base]
-
-    steps:
-    # artifact downloaded to directory: (upload)name/file
-    - uses: actions/download-artifact@v2
-
     - name: Add Coverage PR Comment
       uses: marocchino/sticky-pull-request-comment@v2.2.0
-      if: ${{ github.event_name == 'pull_request' && github.actor == github.repository_owner }}
+      #if: ${{ github.event_name == 'pull_request' && github.actor == github.repository_owner }}
       with:
         header: coverage
-        path: pr-coverage/code-coverage-results.md
-        hide_and_recreate: true
-        hide_classify: "OUTDATED"
+        recreate: true
+        path: code-coverage-results.md
 
   test:
     name: Coverage check
@@ -231,7 +215,6 @@ jobs:
     name: Comment on PR with coverage delta
     runs-on: ubuntu-20.04
     needs: [test, base]
-    if: ${{ github.actor == github.repository_owner }}
 
     steps:
     - name: Environment
@@ -294,9 +277,8 @@ jobs:
       if: env.HAVE_BASE_COVERAGE == 'true'
       with:
         header: delta
+        recreate: true
         path: coverage-delta.md
-        hide_and_recreate: true
-        hide_classify: "OUTDATED"
 
   badge:
     # Only generate and publish if these conditions are met:
@@ -361,6 +343,6 @@ jobs:
     - name: Push badge commit
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.VORPAL_PAT }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: badges
         directory: badges
