@@ -173,6 +173,7 @@ jobs:
         COVERAGE=$( cat code-coverage-results.txt | grep -e ^Summary | grep -o -E "${VALUE} = .{2}" | awk '{ print $4 }' )
         echo "##[set-output name=coverage;]${COVERAGE}"
         echo "##[set-output name=coverage-rounded-display;]${COVERAGE}%"
+        echo "Current coverage is: ${COVERAGE}%"
 
     - name: Code Coverage Summary Report
       uses: irongut/CodeCoverageSummary@v1.1.0
