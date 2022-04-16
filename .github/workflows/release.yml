@@ -19,10 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-20.04, macos-latest, windows-latest]
-        python-version: [3.6, 3.7, 3.8, 3.9]
-        exclude:
-          - os: windows-latest
-            python-version: 2.7
+        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
 
     steps:
     - name: Set git crlf/eol
@@ -86,7 +83,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ env.VERSION }}
-          name: Release ${{ env.VERSION }}
+          name: Release v${{ env.VERSION }}
           body_path: CHANGES.md
           draft: false
           prerelease: false
