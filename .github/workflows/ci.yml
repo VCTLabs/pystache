@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-20.04, macos-latest, windows-latest]
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
     steps:
     - name: Set git crlf/eol
       run: |
@@ -52,7 +52,7 @@ jobs:
 
     - name: Test with specs and pystache-test
       run: |
-        tox -e setup . ext/spec/specs
+        tox -e setup ext/spec/specs
 
     - name: Check pkg builds
       run: |
