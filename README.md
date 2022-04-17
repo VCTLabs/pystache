@@ -216,7 +216,7 @@ To test Pystache with multiple versions of Python (with a single
 command!) and different platforms, you can use [tox](http://pypi.python.org/pypi/tox):
 
     pip install tox
-    tox -e setup
+    tox -e py
 
 To run tests on multiple versions with coverage, run:
 
@@ -234,11 +234,11 @@ The test harness parses the spec's (more human-readable) yaml files if
 [PyYAML](https://pypi.python.org/pypi/PyYAML) is present. Otherwise, it
 parses the json files. To install PyYAML--
 
-    pip install pyyaml
+    pip install pyyaml  # note this is installed automatically by tox
 
 Once the submodule is available, you can run the full test set with:
 
-    tox -e setup . ext/spec/specs
+    tox -e setup ext/spec/specs
 
 To run a subset of the tests, you can use
 [nose](https://somethingaboutorange.com/mrl/projects/nose/0.11.1/testing.html):
