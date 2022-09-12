@@ -6,6 +6,7 @@ TODO: add a docstring.
 
 from pystache import TemplateSpec
 
+
 class Inverted(object):
 
     def t(self):

@@ -8,12 +8,12 @@ Run this script using the -h option for command-line help.
 """
 
 import json
+import sys
 
 # TODO: switch to argparse already, sheesh...
 # The optparse module is deprecated in Python 2.7 in favor of argparse.
 # However, argparse is not available in Python 2.6 and earlier.
 from optparse import OptionParser
-import sys
 
 # We use absolute imports here to allow use of this script from its
 # location in source control (e.g. for development purposes).
@@ -23,7 +23,6 @@ import sys
 #
 from pystache.common import TemplateNotFoundError
 from pystache.renderer import Renderer
-
 
 USAGE = """\
 %prog [-h] template context

@@ -10,7 +10,6 @@ import re
 from pystache import defaults
 from pystache.parsed import ParsedTemplate
 
-
 END_OF_LINE_CHARACTERS = ['\r', '\n']
 NON_BLANK_RE = re.compile(r'^(.)', re.M)
 

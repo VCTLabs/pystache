@@ -11,8 +11,7 @@ import pkgutil
 import sys
 import traceback
 
-from pystache.tests.common import TEXT_DOCTEST_PATHS
-from pystache.tests.common import get_module_names
+from pystache.tests.common import TEXT_DOCTEST_PATHS, get_module_names
 
 # This module is now a stub due to py 3.10 warnings - 18 Aug 2022
 #
