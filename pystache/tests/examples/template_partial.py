@@ -6,6 +6,7 @@ TODO: add a docstring.
 
 from pystache import TemplateSpec
 
+
 class TemplatePartial(TemplateSpec):
 
     def __init__(self, renderer):

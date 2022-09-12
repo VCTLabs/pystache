@@ -16,7 +16,6 @@ spec, we define these categories mutually exclusively as follows:
 
 from pystache.common import PystacheError
 
-
 # This equals '__builtin__' in Python 2 and 'builtins' in Python 3.
 _BUILTIN_MODULE = type(0).__module__
 

@@ -8,12 +8,16 @@ Unit tests of renderengine.py.
 import sys
 import unittest
 
-from pystache.context import ContextStack, KeyNotFoundError
 from pystache import defaults
+from pystache.context import ContextStack, KeyNotFoundError
 from pystache.parser import ParsingError
+from pystache.renderengine import RenderEngine, context_get
 from pystache.renderer import Renderer
-from pystache.renderengine import context_get, RenderEngine
-from pystache.tests.common import AssertStringMixin, AssertExceptionMixin, Attachable
+from pystache.tests.common import (
+    AssertExceptionMixin,
+    AssertStringMixin,
+    Attachable,
+)
 
 
 def _get_unicode_char():

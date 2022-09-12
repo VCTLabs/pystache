@@ -7,11 +7,15 @@ This module provides a Renderer class to render templates.
 
 
 from pystache import defaults
-from pystache.common import TemplateNotFoundError, MissingTags, is_string
+from pystache.common import (
+    MissingTags,
+    TemplateNotFoundError,
+    is_string,
+)
 from pystache.context import ContextStack, KeyNotFoundError
 from pystache.loader import Loader
 from pystache.parsed import ParsedTemplate
-from pystache.renderengine import context_get, RenderEngine
+from pystache.renderengine import RenderEngine, context_get
 from pystache.specloader import SpecLoader
 from pystache.template_spec import TemplateSpec
 

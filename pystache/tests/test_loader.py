@@ -9,10 +9,13 @@ import os
 import sys
 import unittest
 
-from pystache.tests.common import AssertStringMixin, DATA_DIR, SetupDefaults
 from pystache import defaults
 from pystache.loader import Loader
-
+from pystache.tests.common import (
+    DATA_DIR,
+    AssertStringMixin,
+    SetupDefaults,
+)
 
 # We use the same directory as the locator tests for now.
 LOADER_DATA_DIR = os.path.join(DATA_DIR, 'locator')

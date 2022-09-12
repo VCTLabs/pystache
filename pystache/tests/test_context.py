@@ -5,11 +5,22 @@ Unit tests of context.py.
 
 """
 
-from datetime import datetime
 import unittest
+from datetime import datetime
 
-from pystache.context import _NOT_FOUND, _get_value, KeyNotFoundError, ContextStack
-from pystache.tests.common import AssertIsMixin, AssertStringMixin, AssertExceptionMixin, Attachable
+from pystache.context import (
+    _NOT_FOUND,
+    ContextStack,
+    KeyNotFoundError,
+    _get_value,
+)
+from pystache.tests.common import (
+    AssertExceptionMixin,
+    AssertIsMixin,
+    AssertStringMixin,
+    Attachable,
+)
+
 
 class SimpleObject(object):
 
