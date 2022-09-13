@@ -274,7 +274,7 @@ jobs:
 
     - name: Comment PR with test coverage delta
       uses: marocchino/sticky-pull-request-comment@v2.2.0
-      if: env.HAVE_BASE_COVERAGE == 'true'
+      if: env.HAVE_BASE_COVERAGE == 'true' && github.actor == github.repository_owner
       with:
         header: delta
         recreate: true
