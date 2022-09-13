@@ -3,7 +3,7 @@ Pystache
 
 |ci| |conda| |coverage| |bandit| |release|
 
-|pre| |cov|
+|pre| |cov| |lint|
 
 |tag| |license| |python|
 
@@ -319,6 +319,10 @@ License <https://creativecommons.org/licenses/by-sa/3.0/deed.en_US>`__.
 .. |cov| image:: https://raw.githubusercontent.com/PennyDreadfulMTG/pystache/badges/master/test-coverage.svg
     :target: https://github.com/PennyDreadfulMTG/pystache/
     :alt: Test coverage
+
+.. |pylint| image:: https://raw.githubusercontent.com/PennyDreadfulMTG/pystache/badges/master/pylint-score.svg
+    :target: https://github.com/PennyDreadfulMTG/pystache/actions/workflows/pylint.yml
+    :alt: Pylint Score
 
 .. |license| image:: https://img.shields.io/github/license/PennyDreadfulMTG/pystache
     :target: https://github.com/PennyDreadfulMTG/pystache/blob/master/LICENSE
