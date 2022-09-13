@@ -271,10 +271,11 @@ It's usually a good idea to update the hooks to the latest version::
 Mailing List (old)
 ------------------
 
-There is(was) a [mailing list](https://librelist.com/browser/pystache/). Note
-that there is a bit of a delay between posting a message and seeing it
-appear in the mailing list archive.
+There is(was) a `mailing list`_. Note that there is a bit of a delay
+between posting a message and seeing it appear in the mailing list archive.
 
+
+.. _: https://librelist.com/browser/pystache/
 
 Credits
 =======
