@@ -11,4 +11,4 @@ from ._version import __version__
 
 version = __version__
 
-__all__ = ['parse', 'render', 'Renderer', 'TemplateSpec', 'version']
+__all__ = ['parse', 'render', 'Renderer', 'TemplateSpec']
