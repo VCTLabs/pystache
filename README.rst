@@ -3,7 +3,7 @@ Pystache
 
 |ci| |conda| |coverage| |bandit| |release|
 
-|pre| |cov| |climate|
+|pre| |cov|
 
 |tag| |license| |python|
 
@@ -13,24 +13,22 @@ Conda, on Linux, Macos, and Windows (Python 2.7 support has been removed).
 
 |logo|
 
-`Pystache <http://PennyDreadfulMTG.github.com/pystache>`__ is a Python
-implementation of `Mustache <http://mustache.github.com/>`__. Mustache
-is a framework-agnostic, logic-free templating system inspired by
-`ctemplate <http://code.google.com/p/google-ctemplate/>`__ and
-`et <http://www.ivan.fomichev.name/2008/05/erlang-template-engine-prototype.html>`__.
-Like ctemplate, Mustache "emphasizes separating logic from presentation:
+`Pystache <https://github.com/PennyDreadfulMTG/pystache>`__ is a Python
+implementation of `Mustache <https://github.com/mustache/mustache/>`__.
+Mustache is a framework-agnostic, logic-free templating system inspired
+by `ctemplate <https://code.google.com/p/google-ctemplate/>`__ and
+et. Like ctemplate, Mustache "emphasizes separating logic from presentation:
 it is impossible to embed application logic in this template language."
 
-The `mustache(5) <http://mustache.github.com/mustache.5.html>`__ man
+The `mustache(5) <https://mustache.github.io/mustache.5.html>`__ man
 page provides a good introduction to Mustache's syntax. For a more
 complete (and more current) description of Mustache's behavior, see the
 official `Mustache spec <https://github.com/mustache/spec>`__.
 
-Pystache is `semantically versioned <http://semver.org>`__ and older
-versions can still be found on
-`PyPI <http://pypi.python.org/pypi/pystache>`__. This version of
-Pystache now passes all tests in `version
-1.1.3 <https://github.com/mustache/spec/tree/v1.1.3>`__ of the spec.
+Pystache is `semantically versioned <https://semver.org>`__ and older
+versions can still be found on `PyPI <https://pypi.python.org/pypi/pystache>`__.
+This version of Pystache now passes all tests in `version 1.1.3
+<https://github.com/mustache/spec/tree/v1.1.3>`__ of the spec.
 
 
 Requirements
@@ -44,11 +42,6 @@ Pystache is tested with:
 -  Python 3.9
 -  Python 3.10
 -  Conda (py36-py39)
-
-`Distribute <http://packages.python.org/distribute/>`__ (the setuptools
-fork) is no longer required over
-`setuptools <http://pypi.python.org/pypi/setuptools>`__, as the current
-packaging is now PEP517-compliant.
 
 JSON support is needed only for the command-line interface and to run
 the spec tests; PyYAML can still be used (see the Develop section).
@@ -158,7 +151,7 @@ Internally, Pystache uses `only unicode strings`_ (``str`` in Python 3).
 For input, Pystache accepts byte strings (``bytes`` in Python 3).
 For output, Pystache's template rendering methods return only unicode.
 
-.. _only unicode strings: http://docs.python.org/howto/unicode.html#tips-for-writing-unicode-aware-programs
+.. _only unicode strings: https://docs.python.org/howto/unicode.html#tips-for-writing-unicode-aware-programs
 
 Pystache's ``Renderer`` class supports a number of attributes to control
 how Pystache converts byte strings to unicode on input. These include
@@ -191,7 +184,7 @@ To test from a source distribution (without installing):
   $ python test_pystache.py
 
 To test Pystache with multiple versions of Python (with a single
-command!) and different platforms, you can use [tox](http://pypi.python.org/pypi/tox):
+command!) and different platforms, you can use [tox](https://pypi.python.org/pypi/tox):
 
   $ pip install tox
   $ tox -e py
@@ -209,8 +202,8 @@ runs:
   $ git submodule update --init
 
 The test harness parses the spec's (more human-readable) yaml files if
-[PyYAML](https://pypi.python.org/pypi/PyYAML) is present. Otherwise, it
-parses the json files. To install PyYAML--
+`PyYAML <http://pypi.python.org/pypi/PyYAML>`__ is present. Otherwise,
+it parses the json files. To install PyYAML--
 
   $ pip install pyyaml  # note this is installed automatically by tox
 
@@ -272,13 +265,13 @@ It's usually a good idea to update the hooks to the latest version::
     pre-commit autoupdate
 
 .. _gitchangelog: https://github.com/sarnold/gitchangelog-action
-.. _pre-commit: http://pre-commit.com/
+.. _pre-commit: https://pre-commit.com/
 
 
 Mailing List (old)
 ------------------
 
-There is(was) a [mailing list](http://librelist.com/browser/pystache/). Note
+There is(was) a [mailing list](https://librelist.com/browser/pystache/). Note
 that there is a bit of a delay between posting a message and seeing it
 appear in the mailing list archive.
 
@@ -297,7 +290,7 @@ Credits
 
 Pystache logo by `David Phillips <http://davidphillips.us/>`__ is
 licensed under a `Creative Commons Attribution-ShareAlike 3.0 Unported
-License <http://creativecommons.org/licenses/by-sa/3.0/deed.en_US>`__.
+License <https://creativecommons.org/licenses/by-sa/3.0/deed.en_US>`__.
 
 |ccbysa|
 
@@ -326,10 +319,6 @@ License <http://creativecommons.org/licenses/by-sa/3.0/deed.en_US>`__.
     :target: https://github.com/PennyDreadfulMTG/pystache/
     :alt: Test coverage
 
-.. |climate| image:: https://api.codeclimate.com/v1/badges/a8fa1bf4638bfc6581b6/maintainability
-    :target: https://codeclimate.com/github/PennyDreadfulMTG/pystache/maintainability
-    :alt: Maintainability
-
 .. |license| image:: https://img.shields.io/github/license/PennyDreadfulMTG/pystache
     :target: https://github.com/PennyDreadfulMTG/pystache/blob/master/LICENSE
     :alt: License
@@ -348,4 +337,4 @@ License <http://creativecommons.org/licenses/by-sa/3.0/deed.en_US>`__.
 
 .. |logo| image:: gh/images/logo_phillips_small.png
 
-.. |ccbysa| image:: http://i.creativecommons.org/l/by-sa/3.0/88x31.png
+.. |ccbysa| image:: https://i.creativecommons.org/l/by-sa/3.0/88x31.png
