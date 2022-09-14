@@ -9,8 +9,8 @@ import os
 import re
 import sys
 
-from pystache.common import TemplateNotFoundError
 from pystache import defaults
+from pystache.common import TemplateNotFoundError
 
 
 class Locator(object):

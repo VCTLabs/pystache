@@ -152,7 +152,7 @@ jobs:
         tox -e py
 
     - name: Code Coverage Summary Report (data)
-      uses: irongut/CodeCoverageSummary@v1.1.0
+      uses: irongut/CodeCoverageSummary@v1.2.0
       with:
         filename: coverage.xml
         output: 'both'
@@ -176,7 +176,7 @@ jobs:
         echo "Current coverage is: ${COVERAGE}%"
 
     - name: Code Coverage Summary Report
-      uses: irongut/CodeCoverageSummary@v1.1.0
+      uses: irongut/CodeCoverageSummary@v1.2.0
       if: ${{ github.event_name == 'pull_request' }}
       with:
         filename: coverage.xml
@@ -274,7 +274,7 @@ jobs:
 
     - name: Comment PR with test coverage delta
       uses: marocchino/sticky-pull-request-comment@v2.2.0
-      if: env.HAVE_BASE_COVERAGE == 'true'
+      if: env.HAVE_BASE_COVERAGE == 'true' && github.actor == github.repository_owner
       with:
         header: delta
         recreate: true

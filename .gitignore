@@ -11,9 +11,12 @@
 # TextMate project file
 *.tmproj
 # Distribution-related folders and files.
+pystache/_version.py
+pystache.egg-info
+docs/_build
+docs/source/api
 build
 dist
 MANIFEST
-pystache.egg-info
 coverage.xml
 .coverage

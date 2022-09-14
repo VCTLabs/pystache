@@ -7,10 +7,8 @@ This module provides a Loader class for locating and reading templates.
 
 import platform
 
-from pystache import common
-from pystache import defaults
+from pystache import common, defaults
 from pystache.locator import Locator
-
 
 # We make a function so that the current defaults take effect.
 # TODO: revisit whether this is necessary.

@@ -6,6 +6,7 @@ TODO: add a docstring.
 
 from pystache import TemplateSpec
 
+
 class NestedContext(TemplateSpec):
 
     def __init__(self, renderer):

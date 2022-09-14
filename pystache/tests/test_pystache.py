@@ -3,8 +3,7 @@
 import unittest
 
 import pystache
-from pystache import defaults
-from pystache import renderer
+from pystache import defaults, renderer
 from pystache.tests.common import html_escape
 
 

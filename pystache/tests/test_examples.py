@@ -7,18 +7,18 @@ TODO: add a docstring.
 
 import unittest
 
+from pystache import Renderer
+from pystache.tests.common import EXAMPLES_DIR, AssertStringMixin
+
 from .examples.comments import Comments
+from .examples.delimiters import Delimiters
 from .examples.double_section import DoubleSection
 from .examples.escaped import Escaped
-from .examples.unescaped import Unescaped
-from .examples.template_partial import TemplatePartial
-from .examples.delimiters import Delimiters
-from .examples.unicode_output import UnicodeOutput
-from .examples.unicode_input import UnicodeInput
 from .examples.nested_context import NestedContext
-from pystache import Renderer
-from pystache.tests.common import EXAMPLES_DIR
-from pystache.tests.common import AssertStringMixin
+from .examples.template_partial import TemplatePartial
+from .examples.unescaped import Unescaped
+from .examples.unicode_input import UnicodeInput
+from .examples.unicode_output import UnicodeOutput
 
 
 class TestView(unittest.TestCase, AssertStringMixin):

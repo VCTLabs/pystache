@@ -5,19 +5,21 @@ Unit tests for locator.py.
 
 """
 
-from datetime import datetime
 import os
 import sys
 import unittest
+from datetime import datetime
 
 # TODO: remove this alias.
 from pystache.common import TemplateNotFoundError
 from pystache.loader import Loader as Reader
 from pystache.locator import Locator
-
-from pystache.tests.common import DATA_DIR, EXAMPLES_DIR, AssertExceptionMixin
+from pystache.tests.common import (
+    DATA_DIR,
+    EXAMPLES_DIR,
+    AssertExceptionMixin,
+)
 from pystache.tests.data.views import SayHello
-
 
 LOCATOR_DATA_DIR = os.path.join(DATA_DIR, 'locator')
 
