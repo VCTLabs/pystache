@@ -17,13 +17,14 @@ build:
     - pystache-test = pystache.commands.test:main
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3.7
+    - pip
     - setuptools
     - versioningit
 
   run:
-    - python
+    - python >=3.7
 
 test:
   imports:
