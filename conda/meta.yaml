@@ -18,13 +18,13 @@ build:
 
 requirements:
   host:
-    - python >=3.7
     - pip
+    - python
     - setuptools
     - versioningit
-
   run:
     - python >=3.7
+    - versioningit
 
 test:
   imports:
@@ -38,7 +38,6 @@ test:
   commands:
     - pystache --help
     - pystache-test
-
 
 about:
   home: https://github.com/sarnold/pystache
