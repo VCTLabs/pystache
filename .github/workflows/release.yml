@@ -7,7 +7,7 @@ on:
       - '*'
 
 jobs:
-  wheels:
+  packaging:
 
     runs-on: ${{ matrix.os }}
     defaults:
@@ -49,13 +49,13 @@ jobs:
       if: matrix.python-version == 3.7 && runner.os == 'Linux'
       uses: actions/upload-artifact@v2
       with:
-        name: wheels
-        path: ./dist/*.whl
+        name: packages
+        path: ./dist/pystache*
 
   create_release:
     name: Create Release
-    needs: [wheels]
-    runs-on: ubuntu-18.04
+    needs: [packaging]
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Get version
@@ -88,4 +88,24 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            wheels/pystache*.whl
+            packages/pystache*
+
+  # When a GitHub release is made, upload the artifacts to PyPI
+  upload:
+    name: Upload to PyPI
+    runs-on: ubuntu-20.04
+    needs: [packaging]
+
+    steps:
+    - uses: actions/setup-python@v2
+
+    - uses: actions/download-artifact@v2
+
+    - name: check artifacts
+      run: find . -maxdepth 2 -name pystache-\* -type f
+
+#    - name: Publish bdist and sdist packages
+#      uses: pypa/gh-action-pypi-publish@v1.4.1
+#      with:
+#        password: ${{ secrets.pypi_password }}
+#        packages_dir: packages/
