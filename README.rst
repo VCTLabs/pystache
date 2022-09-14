@@ -3,7 +3,7 @@ Pystache
 
 |ci| |conda| |coverage| |bandit| |release|
 
-|pre| |cov| |lint|
+|pre| |cov| |pylint|
 
 |tag| |license| |python|
 
@@ -275,7 +275,7 @@ There is(was) a `mailing list`_. Note that there is a bit of a delay
 between posting a message and seeing it appear in the mailing list archive.
 
 
-.. _: https://librelist.com/browser/pystache/
+.. _mailing list: https://librelist.com/browser/pystache/
 
 Credits
 =======
