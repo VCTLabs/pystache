@@ -50,7 +50,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: packages
-        path: ./dist/pystache*
+        path: ./dist/pystache-*
 
   create_release:
     name: Create Release
@@ -83,12 +83,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ env.VERSION }}
-          name: Release v${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
           body_path: CHANGES.md
           draft: false
           prerelease: false
           files: |
-            packages/pystache*
+            packages/pystache-*
 
   # When a GitHub release is made, upload the artifacts to PyPI
   upload:
@@ -105,7 +105,8 @@ jobs:
       run: find . -maxdepth 2 -name pystache-\* -type f
 
 #    - name: Publish bdist and sdist packages
-#      uses: pypa/gh-action-pypi-publish@v1.4.1
+#      uses: pypa/gh-action-pypi-publish@release/v1
 #      with:
-#        password: ${{ secrets.pypi_password }}
+#        password: ${{ secrets.PYPI_API_TOKEN }}
 #        packages_dir: packages/
+#        print_hash: true

@@ -46,7 +46,17 @@ Pystache is tested with:
 JSON support is needed only for the command-line interface and to run
 the spec tests; PyYAML can still be used (see the Develop section).
 
-Official support for Python 2 will end with Pystache version 0.6.0.
+Official support for Python 2 has ended with Pystache version 0.6.0.
+
+
+.. note:: This project uses versioningit_ to generate and maintain the
+          version file, which only gets included in the sdist/wheel
+          packages. In a fresh clone, running any of the tox_ commands
+          should generate the current version file.
+
+.. _versioningit: https://github.com/jwodder/versioningit
+.. _tox: https://github.com/tox-dev/tox
+
 
 Quick Start
 ===========
@@ -179,17 +189,17 @@ default to values set in Pystache's ``defaults`` module.
 Develop
 =======
 
-To test from a source distribution (without installing):
+To test from a source distribution (without installing)::
 
   $ python test_pystache.py
 
 To test Pystache with multiple versions of Python (with a single
-command!) and different platforms, you can use [tox](https://pypi.python.org/pypi/tox):
+command!) and different platforms, you can use [tox](https://pypi.python.org/pypi/tox)::
 
   $ pip install tox
   $ tox -e py
 
-To run tests on multiple versions with coverage, run:
+To run tests on multiple versions with coverage, run::
 
   $ tox -e py38-linux,py39-linux  # for example
 
@@ -197,17 +207,17 @@ To run tests on multiple versions with coverage, run:
 
 The source distribution tests also include doctests and tests from the
 Mustache spec. To include tests from the Mustache spec in your test
-runs:
+runs::
 
   $ git submodule update --init
 
 The test harness parses the spec's (more human-readable) yaml files if
 `PyYAML <http://pypi.python.org/pypi/PyYAML>`__ is present. Otherwise,
-it parses the json files. To install PyYAML--
+it parses the json files. To install PyYAML::
 
   $ pip install pyyaml  # note this is installed automatically by tox
 
-Once the submodule is available, you can run the full test set with:
+Once the submodule is available, you can run the full test set with::
 
   $ tox -e setup ext/spec/specs
 
