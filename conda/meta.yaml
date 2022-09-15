@@ -1,5 +1,5 @@
 {% set name = "pystache" %}
-{% set version = "0.6.1.dev0" %}
+{% set version = "0.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -40,7 +40,7 @@ test:
     - pystache-test
 
 about:
-  home: https://github.com/sarnold/pystache
+  home: https://github.com/PennyDreadfulMTG/pystache
   license: MIT
   license_family: MIT
   license_file: LICENSE
