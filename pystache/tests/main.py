@@ -13,11 +13,15 @@ import unittest
 from unittest import TestCase, TestProgram
 
 import pystache
-from pystache.tests.common import PACKAGE_DIR, PROJECT_DIR, UNITTEST_FILE_PREFIX
-from pystache.tests.common import get_module_names, get_spec_test_dir
+from pystache.tests.common import (
+    PACKAGE_DIR,
+    PROJECT_DIR,
+    UNITTEST_FILE_PREFIX,
+    get_module_names,
+    get_spec_test_dir,
+)
 from pystache.tests.doctesting import get_doctests
 from pystache.tests.spectesting import get_spec_tests
-
 
 # If this command option is present, then the spec test and doctest directories
 # will be inserted if not provided.

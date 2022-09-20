@@ -8,7 +8,6 @@ Unit tests for defaults.py.
 import unittest
 
 import pystache
-
 from pystache.tests.common import AssertStringMixin
 
 

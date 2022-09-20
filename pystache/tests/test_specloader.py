@@ -9,21 +9,24 @@ import os.path
 import sys
 import unittest
 
-from . import examples
-from .examples.simple import Simple
-from .examples.complex import Complex
-from .examples.lambdas import Lambdas
-from .examples.inverted import Inverted, InvertedLists
-from pystache import Renderer
-from pystache import TemplateSpec
+from pystache import Renderer, TemplateSpec
 from pystache.common import TemplateNotFoundError
-from pystache.locator import Locator
 from pystache.loader import Loader
+from pystache.locator import Locator
 from pystache.specloader import SpecLoader
-from pystache.tests.common import DATA_DIR, EXAMPLES_DIR
-from pystache.tests.common import AssertIsMixin, AssertStringMixin
-from pystache.tests.data.views import SampleView
-from pystache.tests.data.views import NonAscii
+from pystache.tests.common import (
+    DATA_DIR,
+    EXAMPLES_DIR,
+    AssertIsMixin,
+    AssertStringMixin,
+)
+from pystache.tests.data.views import NonAscii, SampleView
+
+from . import examples
+from .examples.complex import Complex
+from .examples.inverted import Inverted, InvertedLists
+from .examples.lambdas import Lambdas
+from .examples.simple import Simple
 
 
 class Thing(object):

@@ -1,6 +1,6 @@
 # https://github.com/cmheisel/pylintrcs/blob/master/pylintrc
 [MASTER]
-#ignore=pystache/tests
+ignore=_version.py
 
 ignore-paths=
     .*tests/,

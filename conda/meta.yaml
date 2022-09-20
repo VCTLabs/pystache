@@ -1,5 +1,5 @@
 {% set name = "pystache" %}
-{% set version = "0.6.0.dev0" %}
+{% set version = "0.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -17,12 +17,14 @@ build:
     - pystache-test = pystache.commands.test:main
 
 requirements:
-  build:
+  host:
+    - pip
     - python
     - setuptools
-
+    - versioningit
   run:
-    - python
+    - python >=3.7
+    - versioningit
 
 test:
   imports:
@@ -37,9 +39,8 @@ test:
     - pystache --help
     - pystache-test
 
-
 about:
-  home: https://github.com/sarnold/pystache
+  home: https://github.com/PennyDreadfulMTG/pystache
   license: MIT
   license_family: MIT
   license_file: LICENSE

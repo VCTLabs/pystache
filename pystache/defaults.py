@@ -19,7 +19,6 @@ import sys
 
 from pystache.common import MissingTags
 
-
 # How to handle encoding errors when decoding strings from str to unicode.
 #
 # This value is passed as the "errors" argument to Python's built-in

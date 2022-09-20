@@ -32,7 +32,7 @@ jobs:
 
     - uses: actions/checkout@v2
       with:
-        submodules: True
+        fetch-depth: 0
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -49,18 +49,3 @@ jobs:
         tox
       env:
         PLATFORM: ${{ matrix.os }}
-
-    - name: Test with specs and pystache-test
-      run: |
-        tox -e setup ext/spec/specs
-
-    - name: Check pkg builds
-      run: |
-        tox -e deploy,check
-
-    - name: Check docs
-      if: runner.os == 'Linux'
-      run: |
-        sudo apt-get -qq update
-        sudo apt-get install -y pandoc
-        tox -e docs

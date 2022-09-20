@@ -10,7 +10,6 @@ import unittest
 
 from pystache.commands.render import main
 
-
 ORIGINAL_STDOUT = sys.stdout
 
 

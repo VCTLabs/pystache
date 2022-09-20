@@ -10,15 +10,18 @@ import os
 import sys
 import unittest
 
-from .examples.simple import Simple
-from pystache import Renderer
-from pystache import TemplateSpec
+from pystache import Renderer, TemplateSpec
 from pystache.common import TemplateNotFoundError
 from pystache.context import ContextStack, KeyNotFoundError
 from pystache.loader import Loader
-
-from pystache.tests.common import get_data_path, AssertStringMixin, AssertExceptionMixin
+from pystache.tests.common import (
+    AssertExceptionMixin,
+    AssertStringMixin,
+    get_data_path,
+)
 from pystache.tests.data.views import SayHello
+
+from .examples.simple import Simple
 
 
 def _make_renderer():
