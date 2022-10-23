@@ -14,7 +14,7 @@ To generate a (full) changelog from the repository root, run:
 
 .. code-block:: bash
 
-    (venv) $ gitchangelog
+    (venv) $ gitchangelog > CHANGELOG.rst
 
 You can use ``gitchangelog`` to create the changelog automatically.  It
 examines git commit history and uses custom "filters" to produce its
@@ -74,10 +74,10 @@ modifier::
 
 See the current `.gitchangelog.rc`_ in the repo for more details.
 
-Read more about ``gitchangelog`` here_.
+Read more about gitchangelog_.
 
 .. _.gitchangelog.rc: https://github.com/VCTLabs/redis-ipc/blob/develop/.gitchangelog.rc
-.. _here: https://github.com/sarnold/gitchangelog
+.. _gitchangelog: https://github.com/sarnold/gitchangelog
 
 
 Git Tags
