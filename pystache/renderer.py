@@ -38,8 +38,8 @@ class Renderer(object):
     >>> print(renderer.render('{{>partial}}', {'thing': 'world'}))
     Hello, world!
 
-    To customize string coercion (e.g. to render False values as ''), one can
-    subclass this class.  For example:
+    To customize string coercion (e.g. to render False values as ``''``), one can
+    subclass this class.  For example::
 
         class MyRenderer(Renderer):
             def str_coerce(self, val):
@@ -425,7 +425,7 @@ class Renderer(object):
         """
         Arguments:
 
-          render_func: a function that accepts a RenderEngine and ContextStack
+          :render_func: a function that accepts a RenderEngine and ContextStack
             instance and returns a template rendering as a unicode string.
 
         """
@@ -449,23 +449,23 @@ class Renderer(object):
 
         Arguments:
 
-          template: a template string that is unicode or a byte string,
+          :template: a template string that is unicode or a byte string,
             a ParsedTemplate instance, or another object instance.  In the
             final case, the function first looks for the template associated
             to the object by calling this class's get_associated_template()
             method.  The rendering process also uses the passed object as
             the first element of the context stack when rendering.
 
-          *context: zero or more dictionaries, ContextStack instances, or objects
+          :context: zero or more dictionaries, ContextStack instances, or objects
             with which to populate the initial context stack.  None
-            arguments are skipped.  Items in the *context list are added to
+            arguments are skipped.  Items in the context list are added to
             the context stack in order so that later items in the argument
             list take precedence over earlier items.
 
-          **kwargs: additional key-value data to add to the context stack.
-            As these arguments appear after all items in the *context list,
+          :kwargs: additional key-value data to add to the context stack.
+            As these arguments appear after all items in the context list,
             in the case of key conflicts these values take precedence over
-            all items in the *context list.
+            all items in the context list.
 
         """
         if is_string(template):

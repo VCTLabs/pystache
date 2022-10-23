@@ -20,7 +20,7 @@ class InitTests(unittest.TestCase):
 
     def test___all__(self):
         """
-        Test that "from pystache import *" works as expected.
+        Test that "from pystache import ``*``" works as expected.
 
         """
         actual = set(GLOBALS_PYSTACHE_IMPORTED) - set(GLOBALS_INITIAL)
