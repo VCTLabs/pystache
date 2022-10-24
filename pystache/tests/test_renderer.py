@@ -290,7 +290,7 @@ class RendererTests(unittest.TestCase, AssertStringMixin):
 
     def test_render__context_and_kwargs(self):
         """
-        Test render(): passing a context and **kwargs.
+        Test render(): passing a context and kwargs.
 
         """
         renderer = self._renderer()
@@ -299,7 +299,7 @@ class RendererTests(unittest.TestCase, AssertStringMixin):
 
     def test_render__kwargs_and_no_context(self):
         """
-        Test render(): passing **kwargs and no context.
+        Test render(): passing kwargs and no context.
 
         """
         renderer = self._renderer()
@@ -307,7 +307,7 @@ class RendererTests(unittest.TestCase, AssertStringMixin):
 
     def test_render__context_and_kwargs__precedence(self):
         """
-        Test render(): **kwargs takes precedence over context.
+        Test render(): kwargs takes precedence over context.
 
         """
         renderer = self._renderer()
@@ -315,7 +315,7 @@ class RendererTests(unittest.TestCase, AssertStringMixin):
 
     def test_render__kwargs_does_not_modify_context(self):
         """
-        Test render(): passing **kwargs does not modify the passed context.
+        Test render(): passing kwargs does not modify the passed context.
 
         """
         context = {}

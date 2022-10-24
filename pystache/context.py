@@ -168,17 +168,17 @@ class ContextStack(object):
 
         Arguments:
 
-          *context: zero or more dictionaries, ContextStack instances, or objects
+          :context: zero or more dictionaries, ContextStack instances, or objects
             with which to populate the initial context stack.  None
-            arguments will be skipped.  Items in the *context list are
+            arguments will be skipped.  Items in the context list are
             added to the stack in order so that later items in the argument
             list take precedence over earlier items.  This behavior is the
-            same as the constructor's.
+            same as the constructor.
 
-          **kwargs: additional key-value data to add to the context stack.
-            As these arguments appear after all items in the *context list,
+          :kwargs: additional key-value data to add to the context stack.
+            As these arguments appear after all items in the context list,
             in the case of key conflicts these values take precedence over
-            all items in the *context list.  This behavior is the same as
+            all items in the context list.  This behavior is the same as
             the constructor's.
 
         """
@@ -211,9 +211,9 @@ class ContextStack(object):
 
         Arguments:
 
-          name: a dotted or non-dotted name.
+          :name: a dotted or non-dotted name.
 
-          default: the value to return if name resolution fails at any point.
+          :default: the value to return if name resolution fails at any point.
             Defaults to the empty string per the Mustache spec.
 
         This method queries items in the stack in order from last-added

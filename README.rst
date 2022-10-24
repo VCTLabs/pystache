@@ -9,7 +9,7 @@ Pystache
 
 
 This updated fork of Pystache is currently tested on Python 3.6+ and in
-Conda, on Linux, Macos, and Windows (Python 2.7 support has been removed).
+Conda, on Linux, Macos, and Windows (Python 2.7 is no longer supported).
 
 |logo|
 
@@ -346,7 +346,7 @@ License <https://creativecommons.org/licenses/by-sa/3.0/deed.en_US>`__.
     :target: https://www.python.org/downloads/
     :alt: Python
 
-.. |pre| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
+.. |pre| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&amp;logoColor=white
    :target: https://github.com/pre-commit/pre-commit
    :alt: pre-commit
 

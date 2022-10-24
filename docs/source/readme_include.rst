@@ -4,3 +4,6 @@
 
 .. include:: ../../README.rst
   :start-after: inclusion-marker-2
+
+
+.. include:: changelog.rst
