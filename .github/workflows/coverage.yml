@@ -21,7 +21,7 @@ jobs:
     name: Prepare CI environment
     runs-on: ubuntu-20.04
     outputs:
-      commit_message: ${{ steps.get_commit_message.outputs.commit_message }}
+      #commit_message: ${{ steps.get_commit_message.outputs.commit_message }}
       branch: ${{ steps.extract_branch.outputs.branch }}
 
     steps:
@@ -35,13 +35,13 @@ jobs:
       run: |
         bash -c set
 
-    - name: "Get commit message"
-      id: get_commit_message
-      env:
-        COMMIT_PUSH: ${{ github.event.head_commit.message }}
-      run: |
-        COMMIT_MESSAGE="${COMMIT_PUSH:-$(git log --format=%B -n 1 HEAD^2)}"
-        echo "commit_message=${COMMIT_MESSAGE}" >> $GITHUB_OUTPUT
+    #- name: "Get commit message"
+      #id: get_commit_message
+      #env:
+        #COMMIT_PUSH: ${{ github.event.head_commit.message }}
+      #run: |
+        #COMMIT_MESSAGE="${COMMIT_PUSH:-$(git log --format=%B -n 1 HEAD^2)}"
+        #echo "commit_message=${COMMIT_MESSAGE}" >> $GITHUB_OUTPUT
 
     - name: Extract branch name
       id: extract_branch
@@ -107,12 +107,12 @@ jobs:
     - name: Check github variables
       # NOTE base coverage env var may be empty here
       env:
-        COMMIT_MESSAGE: ${{ needs.pre_ci.outputs.commit_message }}
+        #COMMIT_MESSAGE: ${{ needs.pre_ci.outputs.commit_message }}
         EXPORT_VALUE: ${{ needs.pre_ci.outputs.branch }}
         BASE_BRANCH: ${{ needs.base.outputs.base_branch }}
         BASE_COVERAGE: ${{ needs.base.outputs.base_cov }}
       run: |
-        echo "Commit message: ${COMMIT_MESSAGE}"
+        #echo "Commit message: ${COMMIT_MESSAGE}"
         echo "Export value (head_ref): ${EXPORT_VALUE}"
         echo "Base value (base_ref): ${BASE_BRANCH}"
         echo "Base coverage (percent): ${{ env.BASE_COVERAGE }}"
