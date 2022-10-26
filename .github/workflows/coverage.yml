@@ -41,7 +41,7 @@ jobs:
         COMMIT_PUSH: ${{ github.event.head_commit.message }}
       run: |
         COMMIT_MESSAGE="${COMMIT_PUSH:-$(git log --format=%B -n 1 HEAD^2)}"
-        echo "::set-output name=commit_message::${COMMIT_MESSAGE}"
+        echo "commit_message=${COMMIT_MESSAGE}" >> $GITHUB_OUTPUT
 
     - name: Extract branch name
       id: extract_branch
@@ -56,7 +56,7 @@ jobs:
         else
             EXPORT_VALUE="${TMP_GITHUB_REF}"
         fi
-        echo "##[set-output name=branch;]${EXPORT_VALUE}"
+        echo "branch=${EXPORT_VALUE}" >> $GITHUB_OUTPUT
 
   base:
     name: Base coverage
@@ -87,13 +87,13 @@ jobs:
         else
             EXPORT_VALUE="${TMP_GITHUB_REF}"
         fi
-        echo "##[set-output name=base_branch;]${EXPORT_VALUE}"
+        echo "base_branch=${EXPORT_VALUE}" >> $GITHUB_OUTPUT
         if [ -f "${EXPORT_VALUE}/${FILE}" ]
         then
             echo "Base coverage found on ${EXPORT_VALUE}"
             BASE_COV=$(cat "${EXPORT_VALUE}/${FILE}")
             echo "Base coverage is: ${BASE_COV}"
-            echo "##[set-output name=base_cov;]${BASE_COV}"
+            echo "base_cov=${BASE_COV}" >> $GITHUB_OUTPUT
         else
             echo "Base coverage NOT found on ${EXPORT_VALUE}!!"
         fi
@@ -138,7 +138,7 @@ jobs:
       with:
         fetch-depth: 0
 
-    - uses: actions/setup-python@v2
+    - uses: actions/setup-python@v4
       with:
         python-version: ${{ env.PYTHON }}
 
@@ -157,7 +157,7 @@ jobs:
         filename: coverage.xml
         output: 'both'
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: src_coverage_rpts
         path: |
@@ -171,8 +171,8 @@ jobs:
         VALUE: "Branch Rate"
       run: |
         COVERAGE=$( cat code-coverage-results.txt | grep -e ^Summary | grep -o -E "${VALUE} = .{3}" | egrep -o '([0-9]+)' )
-        echo "##[set-output name=coverage;]${COVERAGE}"
-        echo "##[set-output name=coverage-rounded-display;]${COVERAGE}%"
+        echo "coverage=${COVERAGE}" >> $GITHUB_OUTPUT
+        echo "coverage-rounded-display=${COVERAGE}" >> $GITHUB_OUTPUT
         echo "Current coverage is: ${COVERAGE}%"
 
     - name: Code Coverage Summary Report
