@@ -152,7 +152,7 @@ jobs:
         tox -e py
 
     - name: Code Coverage Summary Report (data)
-      uses: irongut/CodeCoverageSummary@v1.2.0
+      uses: irongut/CodeCoverageSummary@v1.3.0
       with:
         filename: coverage.xml
         output: 'both'
@@ -176,7 +176,7 @@ jobs:
         echo "Current coverage is: ${COVERAGE}%"
 
     - name: Code Coverage Summary Report
-      uses: irongut/CodeCoverageSummary@v1.2.0
+      uses: irongut/CodeCoverageSummary@v1.3.0
       if: ${{ github.event_name == 'pull_request' }}
       with:
         filename: coverage.xml
@@ -184,8 +184,8 @@ jobs:
         output: 'both'
 
     - name: Add Coverage PR Comment
-      uses: marocchino/sticky-pull-request-comment@v2.2.0
-      if: ${{ github.event_name == 'pull_request' && github.actor == github.repository_owner }}
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: github.event_name == 'pull_request' && (github.event.pull_request.author_association == 'MEMBER' || github.actor == github.repository_owner)
       with:
         header: coverage
         recreate: true
@@ -206,10 +206,12 @@ jobs:
         COVERAGE: ${{ needs.cov_data.outputs.coverage }}
         COVERAGE_ROUNDED: ${{ needs.cov_data.outputs.coverage-rounded-display }}
         BASE_COVERAGE: ${{ needs.base.outputs.base_cov }}
+        MEMBER: ${{ github.event.pull_request.author_association }}
       run: |
         echo "Coverage: ${COVERAGE}"
         echo "Coverage Rounded: ${COVERAGE_ROUNDED}"
         echo "Coverage on Base Branch: ${BASE_COVERAGE}"
+        echo "Author assoc: ${MEMBER}"
 
   comment_cov_change:
     name: Comment on PR with coverage delta
@@ -273,8 +275,8 @@ jobs:
         fi
 
     - name: Comment PR with test coverage delta
-      uses: marocchino/sticky-pull-request-comment@v2.2.0
-      if: env.HAVE_BASE_COVERAGE == 'true' && github.actor == github.repository_owner
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: env.HAVE_BASE_COVERAGE == 'true' && (github.event.pull_request.author_association == 'MEMBER' || github.actor == github.repository_owner)
       with:
         header: delta
         recreate: true
@@ -293,7 +295,7 @@ jobs:
     name: Generate badge image with test coverage value
     runs-on: ubuntu-20.04
     needs: [test, pre_ci]
-    if: ${{ github.event_name == 'push' }}
+    if: github.event_name == 'push'
     outputs:
       url: ${{ steps.url.outputs.url }}
       markdown: ${{ steps.url.outputs.markdown }}
