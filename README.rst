@@ -219,7 +219,7 @@ it parses the json files. To install PyYAML::
 
 Once the submodule is available, you can run the full test set with::
 
-  $ tox -e setup ext/spec/specs
+  $ tox -e setup -- ext/spec/specs
 
 
 Making Changes & Contributing
