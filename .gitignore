@@ -20,3 +20,4 @@ dist
 MANIFEST
 coverage.xml
 .coverage
+.idea
