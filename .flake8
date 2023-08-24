@@ -11,7 +11,7 @@ max-line-length = 110
 max-complexity = 25
 addons = file,open,basestring,xrange,unicode,long,cmp
 ignore =
-    E266,  # too many leading '#' for block comment
-    E731,  # do not assign a lambda expression, use a def
-    E203,  # whitespace before ':'
-    E221,  # multiple spaces before operator
+    E266,
+    E731,
+    E203,
+    E221,

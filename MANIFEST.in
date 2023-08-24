@@ -1,5 +1,9 @@
-graft docs
+recursive-exclude .github *
+recursive-exclude conda *
+recursive-exclude gh *
 
-include tox.ini README.rst
-
-global-exclude *~ *.py[cod]
+include *.py
+include tox.ini
+include *.rst
+include LICENSE
+include *.toml

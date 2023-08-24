@@ -49,12 +49,12 @@ the spec tests; PyYAML can still be used (see the Develop section).
 Official support for Python 2 has ended with Pystache version 0.6.0.
 
 
-.. note:: This project uses versioningit_ to generate and maintain the
+.. note:: This project uses setuptools_scm_ to generate and maintain the
           version file, which only gets included in the sdist/wheel
           packages. In a fresh clone, running any of the tox_ commands
           should generate the current version file.
 
-.. _versioningit: https://github.com/jwodder/versioningit
+.. _setuptools_scm: https://github.com/pypa/setuptools_scm
 .. _tox: https://github.com/tox-dev/tox
 
 
