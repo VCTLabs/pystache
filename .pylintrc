@@ -6,8 +6,6 @@ ignore-paths=
     .*tests/,
     .*test.py$,
 
-profile=no
-
 jobs=1
 
 suggestion-mode=yes
