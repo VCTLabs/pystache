@@ -1,3 +1,11 @@
+v0.6.5 (2023-08-26)
+-------------------
+
+- Bump the version bits called out in the readme. [Stephen L Arnold]
+- Keep changelog up to date manually as I don't know how to
+  autogenerate. [Thomas David Baker]
+
+
 v0.6.4 (2023-08-13)
 -------------------
 
