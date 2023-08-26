@@ -39,6 +39,7 @@ class ParsedTemplate(object):
         Returns: a string of type unicode.
 
         """
+
         # We avoid use of the ternary operator for Python 2.4 support.
         def get_unicode(node):
             if type(node) is str:

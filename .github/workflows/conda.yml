@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: [ubuntu-20.04, windows-latest, macos-latest]
-        python-version: [3.7, 3.9]
+        python-version: [3.8, '3.10']
 
     runs-on: ${{ matrix.platform }}
 
@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache conda
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/conda_pkgs_dir
           key: ${{matrix.os}}-conda-pkgs-${{hashFiles('**/conda/meta.yaml')}}

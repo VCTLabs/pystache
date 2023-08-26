@@ -20,12 +20,12 @@
 import os
 import sys
 
-import pkg_resources
+from importlib.metadata import version
 
+__version__ = version('pystache')
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-
-__version__ = pkg_resources.get_distribution('pystache').version
+#sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+#__version__ = pkg_resources.get_distribution('pystache').version
 
 # -- General configuration ------------------------------------------------
 

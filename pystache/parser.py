@@ -73,7 +73,6 @@ def _compile_template_re(delimiters):
 
 
 class ParsingError(Exception):
-
     pass
 
 
@@ -171,7 +170,6 @@ class _InvertedNode(object):
 
 
 class _SectionNode(object):
-
     # TODO: the template_ and parsed_template_ arguments don't both seem
     # to be necessary.  Can we remove one of them?  For example, if
     # callable(data) is True, then the initial parsed_template isn't used.
@@ -220,7 +218,6 @@ class _SectionNode(object):
 
 
 class _Parser(object):
-
     _delimiters = None
     _template_re = None
 

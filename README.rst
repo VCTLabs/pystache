@@ -8,7 +8,7 @@ Pystache
 |tag| |license| |python|
 
 
-This updated fork of Pystache is currently tested on Python 3.6+ and in
+This updated fork of Pystache is currently tested on Python 3.8+ and in
 Conda, on Linux, Macos, and Windows (Python 2.7 is no longer supported).
 
 |logo|
@@ -36,12 +36,11 @@ Requirements
 
 Pystache is tested with:
 
--  Python 3.6
--  Python 3.7
 -  Python 3.8
 -  Python 3.9
 -  Python 3.10
--  Conda (py36-py39)
+-  Python 3.11
+-  Conda (py38 and py310)
 
 JSON support is needed only for the command-line interface and to run
 the spec tests; PyYAML can still be used (see the Develop section).
@@ -49,12 +48,12 @@ the spec tests; PyYAML can still be used (see the Develop section).
 Official support for Python 2 has ended with Pystache version 0.6.0.
 
 
-.. note:: This project uses versioningit_ to generate and maintain the
+.. note:: This project uses setuptools_scm_ to generate and maintain the
           version file, which only gets included in the sdist/wheel
           packages. In a fresh clone, running any of the tox_ commands
           should generate the current version file.
 
-.. _versioningit: https://github.com/jwodder/versioningit
+.. _setuptools_scm: https://github.com/pypa/setuptools_scm
 .. _tox: https://github.com/tox-dev/tox
 
 

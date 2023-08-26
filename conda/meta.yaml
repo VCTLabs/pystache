@@ -1,5 +1,5 @@
 {% set name = "pystache" %}
-{% set version = "0.6.2" %}
+{% set version = "0.6.4" %}
 
 package:
   name: {{ name|lower }}
@@ -21,10 +21,9 @@ requirements:
     - pip
     - python
     - setuptools
-    - versioningit
+    - setuptools-scm
   run:
-    - python >=3.7
-    - versioningit
+    - python >=3.8
 
 test:
   imports:
