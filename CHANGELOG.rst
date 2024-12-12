@@ -1,3 +1,13 @@
+v0.6.6 (2024-12-12)
+-------------------
+
+- Update README to match supported versions. [Thomas David Baker]
+- Update pre-commit. [Thomas David Baker]
+- Update pyproject.toml with 3.12 and 3.13 Python versions. [Alvaro Crespo]
+- Update tox config to use Python 3.12 and 3.13 versions. [Alvaro Crespo]
+- Update yml files with Python 3.12 and 3.13. [Alvaro Crespo]
+- Update changelog for v0.6.5 a bit belatedly. [Thomas David Baker]
+
 v0.6.5 (2023-08-26)
 -------------------
 
