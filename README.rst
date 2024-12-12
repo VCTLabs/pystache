@@ -9,7 +9,7 @@ Pystache
 
 
 This updated fork of Pystache is currently tested on Python 3.8+ and in
-Conda, on Linux, Macos, and Windows (Python 2.7 is no longer supported).
+Conda, on Linux, Macos, and Windows.
 
 |logo|
 
@@ -40,6 +40,8 @@ Pystache is tested with:
 -  Python 3.9
 -  Python 3.10
 -  Python 3.11
+-  Python 3.12
+-  Python 3.13
 -  Conda (py38 and py310)
 
 JSON support is needed only for the command-line interface and to run
@@ -276,15 +278,6 @@ It's usually a good idea to update the hooks to the latest version::
 .. _gitchangelog: https://github.com/sarnold/gitchangelog-action
 .. _pre-commit: https://pre-commit.com/
 
-
-Mailing List (old)
-------------------
-
-There is(was) a `mailing list`_. Note that there is a bit of a delay
-between posting a message and seeing it appear in the mailing list archive.
-
-
-.. _mailing list: https://librelist.com/browser/pystache/
 
 Credits
 =======
