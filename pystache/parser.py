@@ -17,15 +17,14 @@ NON_BLANK_RE = re.compile(r'^(.)', re.M)
 # TODO: add some unit tests for this.
 # TODO: add a test case that checks for spurious spaces.
 # TODO: add test cases for delimiters.
-def parse(template, delimiters=None):
+def parse(template, delimiters=None, raise_on_mismatch=False):
     """
     Parse a unicode template string and return a ParsedTemplate instance.
 
     Arguments:
-
       template: a unicode template string.
-
       delimiters: a 2-tuple of delimiters.  Defaults to the package default.
+      raise_on_mismatch: a boolean indicating whether to raise an exception when parsing fails.
 
     Examples:
 
@@ -36,7 +35,7 @@ def parse(template, delimiters=None):
     """
     if type(template) is not str:
         raise Exception('Template is not unicode: %s' % type(template))
-    parser = _Parser(delimiters)
+    parser = _Parser(delimiters, raise_on_mismatch=raise_on_mismatch)
     return parser.parse(template)
 
 
@@ -220,12 +219,14 @@ class _SectionNode(object):
 class _Parser(object):
     _delimiters = None
     _template_re = None
+    _raise_on_mismatch = False
 
-    def __init__(self, delimiters=None):
+    def __init__(self, delimiters=None, raise_on_mismatch=False):
         if delimiters is None:
             delimiters = defaults.DELIMITERS
 
         self._delimiters = delimiters
+        self._raise_on_mismatch = raise_on_mismatch
 
     def _compile_delimiters(self):
         self._template_re = _compile_template_re(self._delimiters)
@@ -333,7 +334,7 @@ class _Parser(object):
             parsed_template.add(node)
 
         # Some open/close tags were mismatched.
-        if states:
+        if self._raise_on_mismatch and states:
             raise ParsingError('Tag mismatch.')
 
         # Avoid adding spurious empty strings to the parse tree.

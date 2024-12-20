@@ -33,6 +33,7 @@ class ParseTestCase(unittest.TestCase):
         """
         ts = [
             '<div>{{>A}}</div>',
+            '{{#A}}<div> some text</div>',
             '{{^A}}<div> some text</div>{{/A}}',
             '{{#A}} {{^B}} {{/B}} {{/A}}',
             '{{#A}} {{^B}} {{/B}} {{/A}} {{#C}} {{/C}}',
@@ -53,4 +54,4 @@ class ParseTestCase(unittest.TestCase):
         for t in ts:
             with self.subTest(template=t):
                 with self.assertRaises(ParsingError):
-                    parse(t)
+                    parse(t, raise_on_mismatch=True)
